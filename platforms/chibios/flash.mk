@@ -3,7 +3,7 @@
 # Architecture or project specific options
 #
 
-DFU_ARGS ?=
+DFU_ARGS ?= -d 1688:2220
 ifneq ("$(SERIAL)","")
 	DFU_ARGS += -S $(SERIAL)
 endif
@@ -11,10 +11,10 @@ endif
 DFU_UTIL ?= dfu-util
 
 define EXEC_DFU_UTIL
-	if ! $(DFU_UTIL) -l | grep -q "Found DFU"; then \
+	if ! $(DFU_UTIL) $(DFU_ARGS) -l | grep -q "Found DFU"; then \
 		printf "$(MSG_BOOTLOADER_NOT_FOUND_QUICK_RETRY)" ;\
 		sleep $(BOOTLOADER_RETRY_TIME) ;\
-		while ! $(DFU_UTIL) -l | grep -q "Found DFU"; do \
+		while ! $(DFU_UTIL) $(DFU_ARGS) -l | grep -q "Found DFU"; do \
 			printf "." ;\
 			sleep $(BOOTLOADER_RETRY_TIME) ;\
 		done ;\
