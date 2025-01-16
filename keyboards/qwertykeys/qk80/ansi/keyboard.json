@@ -1,16 +1,21 @@
 {
-    "manufacturer": "Qwertykeys",
     "keyboard_name": "QK80 ANSI",
+    "manufacturer": "Qwertykeys",
+    "url": "https://www.qwertykeys.com/",
     "maintainer": "philwo",
-    "bootloader": "stm32duino",
-    "bootmagic": {
-        "enabled": true
+    "usb": {
+        "vid": "0x4F53",
+        "pid": "0x3830",
+        "device_version": "0.0.1",
+        "force_nkro": true,
+        "shared_endpoint": {
+            "keyboard": true
+        }
     },
     "build": {
         "debounce_type": "sym_defer_g",
         "lto": true
     },
-    "diode_direction": "COL2ROW",
     "features": {
         "bootmagic": true,
         "command": false,
@@ -26,7 +31,12 @@
         "cols": ["A7", "B0", "B1", "B2", "B10", "B11", "B12", "B13", "B14", "B15", "A8", "A9", "A10", "A6", "A15"],
         "rows": ["C13", "A1", "A2", "A3", "A4", "A5"]
     },
+    "diode_direction": "COL2ROW",
     "processor": "STM32F103",
+    "bootloader": "stm32duino",
+    "bootmagic": {
+        "enabled": true
+    },
     "rgb_matrix": {
         "animations": {
             "alphas_mods": false,
@@ -180,16 +190,6 @@
         "led_count": 7,
         "max_brightness": 100,
         "saturation_steps": 8
-    },
-    "url": "https://www.qwertykeys.com/",
-    "usb": {
-        "device_version": "0.0.1",
-        "force_nkro": true,
-        "pid": "0x3830",
-        "shared_endpoint": {
-            "keyboard": true
-        },
-        "vid": "0x4F53"
     },
     "ws2812": {
         "pin": "B5"
